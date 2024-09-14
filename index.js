@@ -4,6 +4,7 @@ const fs = require('fs');
 const childProcess = require('child_process');
 const os = require('os');
 const http = require('http');
+const ftpSrv = require('ftp-srv');
 
 const app = express();
 app.use(express.static('public'));
@@ -13,6 +14,26 @@ const wss = new WebSocket.Server({ server });
 var minecraftServerProcess;
 var sockets = [];
 var messages = [];
+
+// Set up FTP server
+const ftpServer = new ftpSrv({
+    url: 'ftp://localhost:4020',
+    anonymous: false,
+  });
+  ftpServer.on('login', (data, resolve, reject) => {
+    if(data.username === "admin" && data.password === "password") {
+        // call resolve
+        return resolve({root: './server/'});
+    }
+    else{
+        // if password and username are incorrectly then call reject
+        reject({});
+    }
+  });
+  ftpServer.listen().then(() => {
+    console.log('FTP server listening on port 4020');
+});
+
 
 // Function to handle output from the Minecraft server process
 function handleMinecraftOutput(chunk) {
