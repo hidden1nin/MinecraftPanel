@@ -1,4 +1,4 @@
 node_modules
-server
+server/*
 !server/start.sh
 !server/start.bat
