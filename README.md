@@ -24,5 +24,8 @@ npm install
 ```bash
 node index.js
 ```
-![image](https://github.com/user-attachments/assets/37132af0-b86a-444b-9e70-08d4ecafb274)
+![image](https://github.com/user-attachments/assets/10095d6a-a80a-4209-912e-7ecd17440f87)
+![image](https://github.com/user-attachments/assets/11f29f8b-de75-43b8-a383-abb25812e942)
+
+
 
